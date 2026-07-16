@@ -1,9 +1,10 @@
 import { asset as A } from '../lib/asset'
 import { DEPARTMENTS_DATA } from '../lib/departments'
 import { usePageTitle } from '../lib/usePageTitle'
+import { MissionBand, DeptLeads, OtherDepartments, JoinCta } from '../components/DeptSections'
 
-// Shared, responsive template for all department pages: image hero with a navy
-// name band, then an "About" section with the department's copy.
+// Shared, responsive template for the department pages: image hero with a navy
+// name band → About → mission statement → department leads → cross-nav → CTA.
 export default function DepartmentPage({ slug }: { slug: string }) {
   const d = DEPARTMENTS_DATA[slug]
   usePageTitle(d.name)
@@ -36,6 +37,11 @@ export default function DepartmentPage({ slug }: { slug: string }) {
           </div>
         </div>
       </section>
+
+      <MissionBand>{d.mission}</MissionBand>
+      <DeptLeads names={d.leads} />
+      <OtherDepartments current={`/${slug}`} />
+      <JoinCta dept={d.name} />
     </article>
   )
 }

@@ -2,6 +2,8 @@ import { asset as A } from '../lib/asset'
 import Container from '../components/Container'
 import Button from '../components/Button'
 import StatBlock from '../components/StatBlock'
+import TeamCard from '../components/TeamCard'
+import { byName } from '../lib/team'
 import { usePageTitle } from '../lib/usePageTitle'
 
 // Social-media formats — each tile is a portrait "post" whose title is baked
@@ -114,12 +116,17 @@ export default function Social() {
       <section className="bg-mist py-16 md:py-24">
         <Container>
           <h2 className="font-display text-h1 font-bold text-navy">The Team Behind</h2>
-          <img
-            src={A('soc-9.jpg')}
-            alt="The FS Student Hedge Fund team at a Frankfurt School event"
-            className="mt-10 aspect-[4/3] w-full object-cover sm:aspect-[16/7]"
-            loading="lazy"
-          />
+          <div className="mt-10 grid gap-6 lg:grid-cols-[2fr_1fr_1fr]">
+            <img
+              src={A('soc-9.jpg')}
+              alt="The FS Student Hedge Fund team at a Frankfurt School event"
+              className="aspect-[4/3] w-full object-cover lg:h-full lg:aspect-auto"
+              loading="lazy"
+            />
+            {byName('Helena Morris', 'Linh Pham').map((m) => (
+              <TeamCard key={m.name} m={m} />
+            ))}
+          </div>
         </Container>
       </section>
 

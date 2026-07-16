@@ -1,6 +1,8 @@
 import { asset as A } from '../lib/asset'
 import Container from '../components/Container'
+import StatBlock from '../components/StatBlock'
 import { usePageTitle } from '../lib/usePageTitle'
+import { MissionBand, DeptLeads, OtherDepartments, JoinCta } from '../components/DeptSections'
 
 const STEPS = [
   { n: '01', title: 'Universe Definition', desc: 'Defining the eligible security universe based on market, sector, and liquidity criteria. Clear inclusion and exclusion rules ensure a transparent and replicable starting point.' },
@@ -47,6 +49,16 @@ export default function IndexConstruction() {
         </div>
       </section>
 
+      {/* Real numbers from the Solactive pitch deck ("Kein Planspiel" slide) */}
+      <section className="container-page pb-16 md:pb-20">
+        <div className="grid grid-cols-2 gap-6 border-y border-navy/10 py-10 sm:grid-cols-4 sm:gap-10">
+          <StatBlock value="30" label="Members" />
+          <StatBlock value="1" label="Demo Index" />
+          <StatBlock value="30+" label="Companies Analysed" />
+          <StatBlock value="5" label="Sectors Covered" />
+        </div>
+      </section>
+
       <section className="bg-mist py-16 md:py-24">
         <Container>
           <h2 className="font-display text-h1 font-bold text-navy">Our Process</h2>
@@ -62,6 +74,11 @@ export default function IndexConstruction() {
           </ol>
         </Container>
       </section>
+
+      <MissionBand>Construction of data-driven indices — from market screening to a tradable product.</MissionBand>
+      <DeptLeads names={['Vincent Ogrodowczyk', 'David Wunderlich']} />
+      <OtherDepartments current="/index-construction" />
+      <JoinCta dept="Index Construction" />
     </article>
   )
 }
