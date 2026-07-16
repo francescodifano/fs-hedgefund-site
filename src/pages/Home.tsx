@@ -77,10 +77,11 @@ export default function Home() {
               managing derivative portfolios to constructing structured indices in collaboration with industry
               partners like Solactive and UniCredit.
             </p>
-            <div className="mt-10 grid grid-cols-3 gap-6">
+            <div className="mt-10 grid grid-cols-2 gap-6 sm:grid-cols-4">
               <StatBlock value="100+" label="Members" />
-              <StatBlock value="5+" label="Departments" />
-              <StatBlock value="1" label="Vision" />
+              <StatBlock value="10+" label="Nationalities" />
+              <StatBlock value="5" label="Departments" />
+              <StatBlock value="200+" label="Applications" />
             </div>
           </div>
           <img

@@ -2,16 +2,29 @@
 @import 'tailwindcss';
 
 /* ─────────────────────────────────────────────────────────────
-   Design system — colours & fonts are the SAME as the Figma
-   template. No new colours are introduced; this only formalises
-   the palette and adds a fluid, responsive type scale.
+   Design system — verified against the official brand deck
+   ("Design Guidelines FS Student Hedgefund.pptx"), not guessed.
+   Read directly from the XML: across 46 real slides (34 guideline
+   + 12 Solactive Pitch), the ONLY colours ever used as UI chrome
+   are navy (#060033, 190 uses) + white + black + a neutral grey
+   scale (#E5E5E5/#CCCCCC/#999999). Coral/teal/gold/purple appear
+   exactly once each — only as swatches on the palette-reference
+   slide, explicitly labelled "for complex charts and multi-series
+   data" / "muted tones for softer contexts". They are NOT chrome
+   colours and must never be used for nav states, badges, borders,
+   or any UI accent — only reserved here for a future chart/data-viz.
+   Fonts confirmed correct: Georgia is the deck's title font (114
+   uses); Avenir Book is the body font (1,108 uses, licensed — the
+   free Nunito Sans stand-in is the right substitute).
    ───────────────────────────────────────────────────────────── */
 @theme {
   --color-navy: #060033;
-  --color-coral: #ed734b;
-  --color-teal: #5ac5c5;
-  --color-lilac: #c6c4d5;
-  --color-mist: #e5e3eb;
+  --color-mist: #e5e5e5;
+
+  /* Chart-only reserve (deck's "Additional"/"Extra" swatches) — never UI chrome */
+  --color-chart-coral: #e76f51;
+  --color-chart-teal: #0a9396;
+  --color-chart-gold: #e9c46a;
 
   --font-display: Georgia, 'Times New Roman', serif;
   --font-sans: 'Nunito Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
@@ -44,7 +57,7 @@
   }
   /* Consistent, on-brand focus ring for keyboard users */
   :focus-visible {
-    outline: 2px solid var(--color-coral);
+    outline: 2px solid var(--color-navy);
     outline-offset: 3px;
     border-radius: 2px;
   }

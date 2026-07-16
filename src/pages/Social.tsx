@@ -60,10 +60,11 @@ export default function Social() {
 
       {/* Stats */}
       <section className="container-page py-14 md:py-20">
-        <div className="grid grid-cols-3 gap-6 border-y border-navy/10 py-10 sm:gap-10">
-          <StatBlock value="1000" label="Followers" />
-          <StatBlock value="12.000" label="Monthly Views" />
-          <StatBlock value="3" label="Platforms" />
+        <div className="grid grid-cols-2 gap-6 border-y border-navy/10 py-10 sm:grid-cols-4 sm:gap-10">
+          <StatBlock value="~1,000" label="Followers" />
+          <StatBlock value="12,000+" label="Views / Month" />
+          <StatBlock value="1,600+" label="Reach / Month" />
+          <StatBlock value="850+" label="Avg. Post Reach" />
         </div>
       </section>
 
