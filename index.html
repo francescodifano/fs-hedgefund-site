@@ -7,6 +7,12 @@
     <meta name="description" content="FS Student Hedge Fund — a student-led capital markets initiative at Frankfurt School designing and launching publicly tradable financial products." />
     <meta name="theme-color" content="#060033" />
     <title>FS Student Hedge Fund — Frankfurt School of Finance &amp; Management</title>
+    <script>
+      // Back-compat: old hash URLs (…/#/about) forward to the clean path (…/about)
+      if (location.hash.startsWith('#/')) {
+        history.replaceState(null, '', location.pathname.replace(/\/?$/, '/') + location.hash.slice(2) + location.search)
+      }
+    </script>
     <meta property="og:type" content="website" />
     <meta property="og:title" content="FS Student Hedge Fund — Frankfurt School" />
     <meta property="og:description" content="A student-led capital markets initiative at Frankfurt School designing and launching publicly tradable financial products." />
