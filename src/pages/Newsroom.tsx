@@ -16,7 +16,7 @@ export default function Newsroom() {
   return (
     <>
       {/* Hero */}
-      <section className="container-page pt-12 md:pt-16">
+      <section className="container-page pt-12 pb-14 md:pt-16 md:pb-20">
         <p className="font-display text-h3 italic text-navy/60">This Semester</p>
         <h1 className="mt-3 font-display text-display font-bold text-navy">Newsroom</h1>
         <p className="mt-6 max-w-2xl text-lead text-navy/80">
@@ -41,7 +41,7 @@ export default function Newsroom() {
               <div className="flex items-center gap-5">
                 <div className="shrink-0 text-center leading-none">
                   <div className="bg-white/15 px-4 py-2 text-xs font-extrabold uppercase tracking-widest text-white">
-                    Okt
+                    Oct
                   </div>
                   <div className="bg-white px-4 py-2 font-display text-h3 font-bold text-navy">22</div>
                 </div>

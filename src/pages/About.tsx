@@ -24,7 +24,7 @@ export default function About() {
   return (
     <>
       {/* Hero */}
-      <section className="container-page pt-12 md:pt-16">
+      <section className="container-page pt-12 pb-14 md:pt-16 md:pb-20">
         <div className="grid gap-6 md:grid-cols-[1.25fr_1fr] md:items-end">
           <h1 className="font-display text-display text-navy">
             Serious About Finance?
@@ -81,16 +81,16 @@ export default function About() {
 
         <ul className="mt-12 grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {TEAM.map((m) => (
-            <li key={m.name} className="group flex flex-col">
+            <li key={m.name} className="group flex h-full flex-col">
               <div className="overflow-hidden">
                 <img
                   src={A(m.img)}
                   alt={m.name}
-                  className="aspect-[4/5] w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
-                  loading="lazy"
+                  className="aspect-[4/5] w-full object-cover object-[50%_40%] transition-transform duration-300 group-hover:scale-[1.03]"
                 />
               </div>
-              <div className="bg-navy px-5 py-4 text-white">
+              {/* flex-1 equalises caption heights so row bottoms align despite wrapping */}
+              <div className="flex-1 bg-navy px-5 py-4 text-white">
                 <div className="font-sans font-extrabold">{m.name}</div>
                 <div className="text-sm text-white/80">{m.role}</div>
                 <div className="mt-1 text-xs text-white/55">{m.bg}</div>

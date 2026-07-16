@@ -5,6 +5,7 @@ import Button from '../components/Button'
 import StatBlock from '../components/StatBlock'
 import { usePageTitle } from '../lib/usePageTitle'
 
+// Order and naming follow the live site (Departments 01–04) + Media & Community.
 const DEPT_CARDS = [
   {
     name: 'Index Construction',
@@ -12,17 +13,17 @@ const DEPT_CARDS = [
     desc: 'Designing and maintaining custom indices through rigorous methodology, transparent selection criteria, and systematic rebalancing.',
   },
   {
+    name: 'Trading & Derivatives',
+    to: '/derivatives',
+    desc: 'Active trading strategies and derivatives-based approaches with a focus on risk management, execution, and market microstructure.',
+  },
+  {
     name: 'Hedge Fund',
     to: '/hedge-fund',
     desc: 'Multi-strategy fund combining discretionary and systematic approaches to generate risk-adjusted returns across market environments.',
   },
   {
-    name: 'Derivatives & Trading',
-    to: '/derivatives',
-    desc: 'Active trading strategies and derivatives-based approaches with a focus on risk management, execution, and market microstructure.',
-  },
-  {
-    name: 'Quant',
+    name: 'Quantitative Team',
     to: '/quant',
     desc: 'Systematic investment strategies built on rigorous research, quantitative modelling, and data-driven analysis across asset classes.',
   },
@@ -98,11 +99,13 @@ export default function Home() {
         <Container>
           <h2 className="font-display text-h1 font-bold text-navy">Our Departments</h2>
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {DEPT_CARDS.map((c) => (
+            {DEPT_CARDS.map((c, i) => (
               <Link
                 key={c.to}
                 to={c.to}
-                className="group flex flex-col justify-between border border-navy/10 bg-white p-7 transition-colors hover:border-navy/30"
+                className={`group flex flex-col justify-between border border-navy/10 bg-white p-7 transition-colors hover:border-navy/30 ${
+                  i === DEPT_CARDS.length - 1 ? 'lg:col-span-2' : '' /* fills the 3-col grid's orphan cell */
+                }`}
               >
                 <div>
                   <h3 className="font-display text-h3 font-bold text-navy">{c.name}</h3>
@@ -117,8 +120,8 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* CTA */}
-      <section className="bg-navy text-white">
+      {/* CTA — hairline divider separates it from the footer's identical navy band */}
+      <section className="border-b border-white/10 bg-navy text-white">
         <Container className="flex flex-col items-start gap-8 py-16 md:flex-row md:items-center md:justify-between md:py-24">
           <h2 className="font-display text-h1 font-bold">Be Where Talent Starts.</h2>
           <Button to="/contact" variant="light">

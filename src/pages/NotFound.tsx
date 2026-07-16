@@ -8,7 +8,7 @@ export default function NotFound() {
     <Container className="flex min-h-[55vh] flex-col items-center justify-center py-24 text-center">
       <p className="font-sans text-sm font-bold uppercase tracking-[0.2em] text-navy/60">404</p>
       <h1 className="mt-4 font-display text-h1 font-bold text-navy">Page not found</h1>
-      <p className="mt-4 max-w-md text-lead text-navy/70">The page you're looking for doesn't exist or has moved.</p>
+      <p className="mt-4 max-w-xl text-balance text-lead text-navy/70">The page you're looking for doesn't exist or has moved.</p>
       <Button to="/" className="mt-8">Back to home</Button>
     </Container>
   )

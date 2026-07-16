@@ -2,11 +2,13 @@
 
 export type NavItem = { label: string; to: string }
 
+// Department names/order follow the live site: 01 Index Construction,
+// 02 Trading & Derivatives, 03 Hedge Fund, 04 Quantitative Team.
 export const DEPARTMENTS: NavItem[] = [
   { label: 'Index Construction', to: '/index-construction' },
+  { label: 'Trading & Derivatives', to: '/derivatives' },
   { label: 'Hedge Fund', to: '/hedge-fund' },
-  { label: 'Derivatives & Trading', to: '/derivatives' },
-  { label: 'Quant', to: '/quant' },
+  { label: 'Quantitative Team', to: '/quant' },
   { label: 'Media & Community', to: '/social' },
 ]
 
@@ -14,9 +16,9 @@ export const FOOTER_PAGES: NavItem[] = [
   { label: 'Newsroom', to: '/newsroom' },
   { label: 'Research', to: '/research' },
   { label: 'Index Construction', to: '/index-construction' },
+  { label: 'Trading & Derivatives', to: '/derivatives' },
   { label: 'Hedge Fund', to: '/hedge-fund' },
-  { label: 'Derivatives & Trading', to: '/derivatives' },
-  { label: 'Quant', to: '/quant' },
+  { label: 'Quantitative Team', to: '/quant' },
   { label: 'Media & Community', to: '/social' },
   { label: 'About', to: '/about' },
   { label: 'Contact Us', to: '/contact' },

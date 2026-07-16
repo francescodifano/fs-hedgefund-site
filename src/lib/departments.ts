@@ -1,10 +1,12 @@
-// Content for the department pages — one record drives the shared DepartmentPage.
-export type Dept = { name: string; hero: string; body: string[] }
+// Content for the department pages — sourced verbatim from the live site
+// (fs-student-hedgefund.com/departments/*), which numbers the departments and
+// names them "Trading & Derivatives" / "Quantitative Team".
+// Index Construction has its own richer page (IndexConstruction.tsx).
+export type Dept = { num: string; name: string; hero: string; body: string[] }
 
-// Index Construction has its own richer page (IndexConstruction.tsx); the rest
-// share this template.
 export const DEPARTMENTS_DATA: Record<string, Dept> = {
   'hedge-fund': {
+    num: '03',
     name: 'Hedge Fund',
     hero: 'hedgefund-1.jpg',
     body: [
@@ -12,7 +14,8 @@ export const DEPARTMENTS_DATA: Record<string, Dept> = {
     ],
   },
   derivatives: {
-    name: 'Derivatives & Trading',
+    num: '02',
+    name: 'Trading & Derivatives',
     hero: 'derivatives-1.jpg',
     body: [
       'The trading and derivative department brings together students from across disciplines, forming cross-functional teams that collaborate to navigate real-world financial markets. Each team manages a portfolio using a set of derivative instruments spanning multiple asset classes, developing and executing strategies in a structured, competitive environment.',
@@ -20,7 +23,8 @@ export const DEPARTMENTS_DATA: Record<string, Dept> = {
     ],
   },
   quant: {
-    name: 'Quant',
+    num: '04',
+    name: 'Quantitative Team',
     hero: 'quant-1.jpg',
     body: [
       'The Quantitative Research department brings together students with a passion for mathematics, data science, and financial markets, forming collaborative teams that develop and apply systematic investment strategies. Each team works to research, build, and refine quantitative models and analytical tools that support more informed investment decisions across asset classes.',

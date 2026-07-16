@@ -31,13 +31,14 @@ export default function Contact() {
             </label>
             <label className="block">
               <span className="text-navy">Write a message</span>
-              <textarea rows={5} className={`mt-2 resize-none ${field}`} />
+              <textarea rows={4} className={`mt-2 resize-none ${field}`} />
             </label>
             <Button type="submit">Submit</Button>
           </form>
         </div>
 
-        <div className="relative order-first lg:order-last">
+        {/* Image follows the heading/form on mobile (title leads the page), sits right on desktop */}
+        <div className="relative">
           <div className="absolute -bottom-3 -left-3 hidden h-full w-full bg-mist sm:block" aria-hidden />
           <img
             src={A('contact-mountain.jpg')}

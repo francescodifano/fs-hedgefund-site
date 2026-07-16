@@ -29,15 +29,17 @@ export default function IndexConstruction() {
       </section>
 
       <section className="container-page py-16 md:py-24">
-        <div className="max-w-4xl space-y-6 text-lead text-navy/85">
+        <p className="font-sans text-sm font-bold uppercase tracking-[0.2em] text-navy/60">Department 01</p>
+        <div className="mt-6 max-w-4xl space-y-6 text-lead text-navy/85">
           <p>
-            The Index Construction Department designs and launches publicly tradable financial indices, taking ideas
-            from raw sector research all the way through to a live, investable product.
+            The Index Construction department translates market insights into investable strategies. Our members
+            analyze financial markets, identify opportunities, and develop thematic baskets by selecting relevant
+            underlyings across asset classes such as equities, commodities, and alternatives.
           </p>
           <p>
-            Our process follows a rigorous, transparent methodology — from defining the eligible universe and
-            designing weighting schemes to backtesting across market regimes and maintaining each index through
-            disciplined rebalancing.
+            These baskets are then transformed into structured indices with defined weighting methodologies in
+            collaboration with our partner Solactive. Building on this, we work with UniCredit to structure tailored
+            financial products, bringing our ideas from research into real-world market applications.
           </p>
           <p className="font-display text-h3 font-bold text-navy">
             In partnership with Solactive and UniCredit, we build real financial products — not simulations.
@@ -51,8 +53,9 @@ export default function IndexConstruction() {
           <ol className="mt-10 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
             {STEPS.map((s) => (
               <li key={s.n} className="border-t-2 border-navy/20 pt-5">
-                <div className="font-display text-3xl font-bold text-navy/40">{s.n}</div>
-                <h3 className="mt-2 font-display text-h3 font-bold text-navy">{s.title}</h3>
+                <div className="font-display text-3xl font-bold text-navy/60">{s.n}</div>
+                {/* two-line reserve keeps the body paragraphs aligned across the 4-up row */}
+                <h3 className="mt-2 font-display text-h3 font-bold text-navy lg:min-h-[2lh]">{s.title}</h3>
                 <p className="mt-2 text-navy/70">{s.desc}</p>
               </li>
             ))}

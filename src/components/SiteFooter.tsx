@@ -18,7 +18,7 @@ export default function SiteFooter() {
         {/* Q1 Report CTA card */}
         <div className="relative isolate flex min-h-[300px] flex-col justify-between overflow-hidden p-8 sm:p-10">
           <img src={A('q1report.jpg')} alt="" className="absolute inset-0 -z-10 h-full w-full object-cover" loading="lazy" />
-          <h2 className="font-sans text-5xl font-extrabold sm:text-6xl">Q1 Report</h2>
+          <h2 className="font-display text-5xl font-bold sm:text-6xl">Q1 Report</h2>
           <Button to="/newsroom" variant="light" className="self-start">Get Report</Button>
         </div>
 

@@ -117,14 +117,14 @@ export default function Social() {
           <img
             src={A('soc-9.jpg')}
             alt="The FS Student Hedge Fund team at a Frankfurt School event"
-            className="mt-10 aspect-[16/7] w-full object-cover"
+            className="mt-10 aspect-[4/3] w-full object-cover sm:aspect-[16/7]"
             loading="lazy"
           />
         </Container>
       </section>
 
-      {/* CTA */}
-      <section className="bg-navy text-white">
+      {/* CTA — hairline divider separates it from the footer's identical navy band */}
+      <section className="border-b border-white/10 bg-navy text-white">
         <Container className="flex flex-col items-start gap-8 py-16 md:flex-row md:items-center md:justify-between md:py-24">
           <h2 className="font-display text-h1 font-bold">More Into Content Than Spreadsheets?</h2>
           <Button to="/contact" variant="light">
