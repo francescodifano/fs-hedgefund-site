@@ -74,7 +74,7 @@ export default function About() {
         <ul className="mt-12 grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {TEAM.map((m) => (
             <li key={m.name}>
-              <TeamCard m={m} eager />
+              <TeamCard m={m} />
             </li>
           ))}
         </ul>
