@@ -1,25 +1,20 @@
-import type { ReactNode } from 'react'
 import { asset as A } from '../lib/asset'
 import Container from '../components/Container'
 import StatBlock from '../components/StatBlock'
 import { usePageTitle } from '../lib/usePageTitle'
 import { MissionBand, DeptLeads, OtherDepartments, JoinCta } from '../components/DeptSections'
 
-const STEPS = [
-  { n: '01', title: 'Universe Definition', desc: 'Defining the eligible security universe based on market, sector, and liquidity criteria. Clear inclusion and exclusion rules ensure a transparent and replicable starting point.' },
-  { n: '02', title: 'Methodology Design', desc: 'Developing the weighting scheme, selection rules, and rebalancing frequency, designed to capture specific exposures while maintaining investability and minimizing turnover.' },
-  { n: '03', title: 'Backtesting & Analysis', desc: 'Rigorous historical simulation to evaluate index behaviour across market regimes. Performance, risk characteristics, and factor exposures are analysed to validate the methodology.' },
-  { n: '04', title: 'Maintenance & Rebalancing', desc: 'Ongoing index maintenance: periodic rebalancing, corporate action handling, and methodology reviews to ensure continued accuracy and relevance.' },
+// "Our Process" — the Figma design's two-row box system: three navy boxes for
+// the internal stages, two light boxes for the partner stages, plus a legend.
+// Copy is the Figma's own.
+const INTERNAL = [
+  { n: '01', title: 'Research', desc: 'Systematic top-down screening across global sectors to identify investable themes and structural opportunities.' },
+  { n: '02', title: 'Asset Selection', desc: 'Pod-based bottom-up analysis of individual securities, scored and ranked against a defined set of criteria.' },
+  { n: '03', title: 'Structuring', desc: 'Formal index construction covering weighting methodology, rebalancing rules, and a full performance backtest.' },
 ]
-
-// Flow chart nodes — the structure from the Solactive pitch deck: three internal
-// stages, then the two partners who calculate and issue the product.
-const FLOW: { title: string; desc: string; partner?: boolean }[] = [
-  { title: 'Market Screening', desc: 'Identify global markets' },
-  { title: 'Asset Selection', desc: 'Deep-dive analysis and valuation' },
-  { title: 'Structuring Desk', desc: 'Weighting and index construction' },
-  { title: 'Solactive', desc: 'Index calculation and licensing as a tradable underlying', partner: true },
-  { title: 'Issuance by UniCredit', desc: 'Structuring into a tradable certificate', partner: true },
+const PARTNERS = [
+  { tag: 'Calculation', name: 'Solactive', desc: 'Independent index calculation and administration, ensuring full methodology transparency and regulatory compliance.' },
+  { tag: 'Issuance', name: 'UniCredit', desc: 'Structured product issuance under the onemarkets platform, bringing the index to market as a publicly tradable financial product.' },
 ]
 
 const INDEX_SPECS: [string, string][] = [
@@ -32,39 +27,16 @@ const INDEX_SPECS: [string, string][] = [
   ['Issuance', 'UniCredit'],
 ]
 
-function FlowArrow() {
-  return (
-    <div aria-hidden className="flex items-center justify-center text-2xl font-bold text-navy/50">
-      <span className="lg:hidden">↓</span>
-      <span className="hidden lg:block">→</span>
-    </div>
-  )
-}
-
-function FlowBox({ title, desc, partner }: { title: string; desc: string; partner?: boolean }) {
-  return (
-    <div className={`flex-1 p-5 text-center lg:text-left ${partner ? 'bg-navy text-white' : 'border border-navy/20 bg-white text-navy'}`}>
-      <div className="font-sans font-extrabold">{title}</div>
-      <div className={`mt-1 text-sm ${partner ? 'text-white/80' : 'text-navy/70'}`}>{desc}</div>
-    </div>
-  )
-}
-
-// Index Construction — the richest department page: hero, intro, stats, process,
-// flow chart, index banner, then the shared department sections.
+// Index Construction — the richest department page: hero, intro, stats,
+// process, index banner, then the shared department sections.
 export default function IndexConstruction() {
   usePageTitle('Index Construction')
-  const flow: ReactNode[] = []
-  FLOW.forEach((n, i) => {
-    if (i > 0) flow.push(<FlowArrow key={`a${i}`} />)
-    flow.push(<FlowBox key={n.title} {...n} />)
-  })
 
   return (
     <article>
       <section className="relative">
         <img
-          src={A('indexconstruction-3.jpg')}
+          src={A('indexconstruction-1.jpg')}
           alt=""
           className="h-[48vw] max-h-[520px] min-h-[240px] w-full object-cover"
           fetchPriority="high"
@@ -108,30 +80,45 @@ export default function IndexConstruction() {
         </div>
       </section>
 
-      <section className="bg-mist py-16 md:py-24">
-        <Container>
-          <h2 className="font-display text-h1 font-bold text-navy">Our Process</h2>
-          <ol className="mt-10 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
-            {STEPS.map((s) => (
-              <li key={s.n} className="border-t-2 border-navy/20 pt-5">
-                <div className="font-display text-3xl font-bold text-navy/60">{s.n}</div>
-                {/* two-line reserve keeps the body paragraphs aligned across the 4-up row */}
-                <h3 className="mt-2 font-display text-h3 font-bold text-navy lg:min-h-[2lh]">{s.title}</h3>
-                <p className="mt-2 text-navy/70">{s.desc}</p>
-              </li>
-            ))}
-          </ol>
-        </Container>
-      </section>
-
-      {/* Flow chart: from research to a tradable product */}
+      {/* Our Process — the Figma design's two-row box system:
+          navy boxes = FSHF internal stages, light boxes = partner stages */}
       <section className="container-page py-16 md:py-24">
-        <h2 className="font-display text-h1 font-bold text-navy">From Research to Tradable Product</h2>
-        <div className="mt-10 flex flex-col gap-3 lg:flex-row lg:items-stretch lg:gap-4">{flow}</div>
-        <p className="mt-8 max-w-3xl text-navy/70">
-          In parallel, events and social media content accompany the whole process in collaboration with External
-          Relations.
-        </p>
+        <h2 className="font-display text-h1 font-bold text-navy">Our Process</h2>
+
+        <div className="mt-10 grid gap-5 md:grid-cols-3">
+          {INTERNAL.map((s) => (
+            <div key={s.n} className="bg-navy p-7 text-white md:p-8">
+              <div className="flex items-baseline gap-4">
+                <span className="font-display text-3xl font-bold">{s.n}</span>
+                <h3 className="font-sans text-2xl font-extrabold">{s.title}</h3>
+              </div>
+              <p className="mt-4 text-white/85">{s.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-5 grid gap-5 md:grid-cols-2">
+          {PARTNERS.map((p) => (
+            <div key={p.name} className="bg-mist p-7 text-navy md:p-8">
+              <div className="flex items-baseline justify-between gap-4">
+                <h3 className="font-sans text-2xl font-extrabold">{p.name}</h3>
+                <span className="font-display text-lg text-navy/70">{p.tag}</span>
+              </div>
+              <p className="mt-4 text-navy/80">{p.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3 text-sm font-semibold text-navy">
+          <span className="flex items-center gap-2.5">
+            <span aria-hidden className="inline-block h-4 w-4 bg-navy" />
+            FSHF Internal
+          </span>
+          <span className="flex items-center gap-2.5">
+            <span aria-hidden className="inline-block h-4 w-4 border border-navy/20 bg-mist" />
+            Partners
+          </span>
+        </div>
       </section>
 
       {/* Index banner: FSHF Energy Value Chain + performance chart */}
