@@ -3,12 +3,9 @@ import { Link, NavLink, useLocation } from 'react-router-dom'
 import { asset as A } from '../lib/asset'
 import { DEPARTMENTS } from '../lib/nav'
 
-// Template language: nav stays navy; the current page gets a navy underline,
-// hover dims slightly. (No accent colors in the chrome.)
-const navCls = ({ isActive }: { isActive: boolean }) =>
-  `font-sans font-extrabold text-[1.05rem] text-navy transition-opacity ${
-    isActive ? 'underline decoration-2 underline-offset-8' : 'hover:opacity-60'
-  }`
+// Team feedback: no underline on hover/active — nav items stay plain navy,
+// hover dims slightly.
+const navCls = () => 'font-sans font-extrabold text-[1.05rem] text-navy transition-opacity hover:opacity-60'
 
 // One responsive header for the whole site: logo + primary nav + Departments
 // dropdown on desktop, hamburger → full-screen menu on mobile.
@@ -18,7 +15,6 @@ export default function SiteHeader() {
   const [mobileDeptOpen, setMobileDeptOpen] = useState(false)
   const { pathname } = useLocation()
   const deptRef = useRef<HTMLDivElement>(null)
-  const deptActive = DEPARTMENTS.some((d) => d.to === pathname)
 
   useEffect(() => {
     setMobileOpen(false)
@@ -49,21 +45,19 @@ export default function SiteHeader() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 border-b border-mist bg-white/95 backdrop-blur">
-      <div className="container-page flex h-20 items-center justify-between gap-4">
-        <Link to="/" aria-label="FS Student Hedge Fund — home" className="shrink-0">
-          <img src={A('logo-nav.png')} alt="FS Student Hedge Fund" className="h-9 w-auto sm:h-10" width="243" height="66" />
+      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur">
+      <div className="container-page flex h-24 items-center justify-between gap-4">
+        <Link to="/" aria-label="FS Student Hedge Fund home" className="shrink-0">
+          <img src={A('logo-nav.png')} alt="FS Student Hedge Fund" className="h-10 w-auto sm:h-12" width="243" height="66" />
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary">
+        <nav className="hidden items-center gap-10 lg:flex" aria-label="Primary">
           <NavLink to="/newsroom" className={navCls}>Newsroom</NavLink>
           <NavLink to="/research" className={navCls}>Research</NavLink>
           <div ref={deptRef} className="relative">
             <button
-              className={`inline-flex items-center gap-1 font-sans text-[1.05rem] font-extrabold text-navy transition-opacity ${
-                deptActive || deptOpen ? 'underline decoration-2 underline-offset-8' : 'hover:opacity-60'
-              }`}
+              className="inline-flex items-center gap-1 font-sans text-[1.05rem] font-extrabold text-navy transition-opacity hover:opacity-60"
               aria-expanded={deptOpen}
               aria-haspopup="true"
               onClick={() => setDeptOpen((o) => !o)}
@@ -86,9 +80,6 @@ export default function SiteHeader() {
           </div>
           <NavLink to="/about" className={navCls}>About</NavLink>
           <NavLink to="/contact" className={navCls}>Contact</NavLink>
-          <button aria-label="Search" className="text-navy transition-opacity hover:opacity-60">
-            <SearchIcon />
-          </button>
         </nav>
 
         {/* Mobile trigger */}
@@ -145,11 +136,3 @@ function Chevron({ open, big = false }: { open: boolean; big?: boolean }) {
   )
 }
 
-function SearchIcon() {
-  return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-      <circle cx="11" cy="11" r="7" />
-      <line x1="21" y1="21" x2="16.65" y2="16.65" strokeLinecap="round" />
-    </svg>
-  )
-}

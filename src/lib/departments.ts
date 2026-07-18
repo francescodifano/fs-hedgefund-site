@@ -21,11 +21,11 @@ export const DEPARTMENTS_DATA: Record<string, Dept> = {
     num: '02',
     name: 'Trading & Derivatives',
     hero: 'derivatives-1.jpg',
-    mission: 'Portfolio competitions with real options strategies — teams competing head-to-head.',
+    mission: 'Portfolio competitions with real options strategies, teams competing head-to-head.',
     leads: ['Beliz Hyuseinova'],
     body: [
       'The trading and derivative department brings together students from across disciplines, forming cross-functional teams that collaborate to navigate real-world financial markets. Each team manages a portfolio using a set of derivative instruments spanning multiple asset classes, developing and executing strategies in a structured, competitive environment.',
-      'Teams are evaluated on a quarterly basis using performance metrics, with standings tracked and published throughout the year. Beyond the competition itself, members benefit from a rich learning environment — including workshops on financial theory and derivative strategies — as well as ongoing dialogue with experienced traders and academics who provide guidance, challenge ideas, and help teams refine their thinking. It is a department designed to sharpen analytical skills, foster cross-asset understanding, and cultivate the next generation of investment talent.',
+      'Teams are evaluated on a quarterly basis using performance metrics, with standings tracked and published throughout the year. Beyond the competition itself, members benefit from a rich learning environment, including workshops on financial theory and derivative strategies, as well as ongoing dialogue with experienced traders and academics who provide guidance, challenge ideas, and help teams refine their thinking. It is a department designed to sharpen analytical skills, foster cross-asset understanding, and cultivate the next generation of investment talent.',
     ],
   },
   quant: {

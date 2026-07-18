@@ -50,10 +50,10 @@ export default function Research() {
             loading="lazy"
           />
           <div className="flex flex-col justify-center p-8 md:p-12">
-            <p className="font-sans text-sm font-bold uppercase tracking-[0.2em] text-white/60">Equity Research · 2025</p>
+            <p className="font-sans text-sm font-bold tracking-wide text-white/60">Equity Research · 2025</p>
             <h3 className="mt-4 font-display text-h2 font-bold">Seagate Technology Holdings PLC</h3>
             <p className="mt-4 text-white/75">
-              In-depth equity research on Seagate Technology, a leading provider of data storage solutions — covering
+              In-depth equity research on Seagate Technology, a leading provider of data storage solutions, covering
               the business, its financials, and the valuation case behind our view.
             </p>
             <div className="mt-8">

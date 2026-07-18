@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { asset as A } from '../lib/asset'
 import { FOOTER_PAGES } from '../lib/nav'
@@ -10,17 +11,65 @@ const SOCIALS = [
   { icon: 'icon-linkedin.svg', label: 'LinkedIn' },
 ]
 
-// One responsive footer for the whole site.
+// Report slides for the footer carousel (auto-advances every 5 seconds).
+const REPORTS: { img: string; title: string; cta: string; to?: string; href?: string }[] = [
+  { img: 'q1report.jpg', title: 'Q1 Report', cta: 'Get Report', to: '/newsroom' },
+  {
+    img: 'research-2.jpg',
+    title: 'Seagate Equity Research',
+    cta: 'Read the report',
+    href: `${import.meta.env.BASE_URL}papers/seagate-technology-equity-research-2025.pdf`,
+  },
+]
+
+function ReportCarousel() {
+  const [idx, setIdx] = useState(0)
+  useEffect(() => {
+    const t = setInterval(() => setIdx((i) => (i + 1) % REPORTS.length), 5000)
+    return () => clearInterval(t)
+  }, [])
+
+  return (
+    <div>
+      <div className="relative isolate min-h-[300px] overflow-hidden">
+        {REPORTS.map((r, i) => (
+          <div
+            key={r.title}
+            aria-hidden={i !== idx}
+            className={`absolute inset-0 flex flex-col justify-between p-8 transition-opacity duration-700 sm:p-10 ${
+              i === idx ? 'opacity-100' : 'pointer-events-none opacity-0'
+            }`}
+          >
+            <img src={A(r.img)} alt="" className="absolute inset-0 -z-20 h-full w-full object-cover" loading="lazy" />
+            <div className="absolute inset-0 -z-10 bg-navy/40" />
+            <h2 className="font-display text-4xl font-bold sm:text-5xl">{r.title}</h2>
+            <Button to={r.to} href={r.href} variant="light" className="self-start">
+              {r.cta}
+            </Button>
+          </div>
+        ))}
+      </div>
+      {/* Pagination dots on the navy footer background (not over the photo) */}
+      <div className="mt-4 flex justify-center gap-2.5">
+        {REPORTS.map((r, i) => (
+          <button
+            key={r.title}
+            aria-label={`Show ${r.title}`}
+            onClick={() => setIdx(i)}
+            className={`h-2.5 w-2.5 rounded-full transition-colors ${i === idx ? 'bg-white' : 'bg-white/40 hover:bg-white/60'}`}
+          />
+        ))}
+      </div>
+    </div>
+  )
+}
+
+// One responsive footer for the whole site. All footer text is white.
 export default function SiteFooter() {
   return (
     <footer className="bg-navy text-white">
       <div className="container-page grid gap-12 py-14 lg:grid-cols-[1.1fr_1fr] lg:gap-16 lg:py-20">
-        {/* Q1 Report CTA card */}
-        <div className="relative isolate flex min-h-[300px] flex-col justify-between overflow-hidden p-8 sm:p-10">
-          <img src={A('q1report.jpg')} alt="" className="absolute inset-0 -z-10 h-full w-full object-cover" loading="lazy" />
-          <h2 className="font-display text-5xl font-bold sm:text-6xl">Q1 Report</h2>
-          <Button to="/newsroom" variant="light" className="self-start">Get Report</Button>
-        </div>
+        <ReportCarousel />
 
         {/* Link + contact columns */}
         <div className="grid gap-10 sm:grid-cols-2">
@@ -29,7 +78,7 @@ export default function SiteFooter() {
             <ul className="mt-5 space-y-2.5">
               {FOOTER_PAGES.map((p) => (
                 <li key={p.to}>
-                  <Link to={p.to} className="text-white/80 transition-colors hover:text-white">{p.label}</Link>
+                  <Link to={p.to} className="text-white transition-opacity hover:opacity-70">{p.label}</Link>
                 </li>
               ))}
             </ul>
@@ -37,10 +86,10 @@ export default function SiteFooter() {
 
           <div>
             <h3 className="font-sans text-xl font-extrabold">Contact</h3>
-            <ul className="mt-5 space-y-3 text-white/80">
+            <ul className="mt-5 space-y-3 text-white">
               <li className="flex gap-3">
                 <ClockIcon />
-                <span>Mon – Fri: 8:00am – 6:00pm</span>
+                <span>Mon-Fri: 8:00am to 6:00pm</span>
               </li>
               <li className="flex gap-3">
                 <PinIcon />
@@ -52,7 +101,7 @@ export default function SiteFooter() {
               </li>
               <li className="flex gap-3">
                 <MailIcon />
-                <a href="mailto:info@fs-student-hedgefund.com" className="text-[15px] break-words transition-colors hover:text-white">
+                <a href="mailto:info@fs-student-hedgefund.com" className="text-[15px] break-words transition-opacity hover:opacity-70">
                   info@fs-student-hedgefund.com
                 </a>
               </li>

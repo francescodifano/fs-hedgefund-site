@@ -12,7 +12,7 @@ export function MissionBand({ children }: { children: string }) {
   return (
     <section className="border-b border-white/10 bg-navy text-white">
       <Container className="py-14 md:py-20">
-        <p className="font-sans text-sm font-bold uppercase tracking-[0.2em] text-white/60">Our mission</p>
+        <p className="font-sans text-sm font-bold tracking-wide text-white/60">Our mission</p>
         <p className="mt-4 max-w-4xl font-display text-h2 font-bold">{children}</p>
       </Container>
     </section>

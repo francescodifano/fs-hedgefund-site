@@ -1,11 +1,10 @@
 import { Link } from 'react-router-dom'
 import { asset as A } from '../lib/asset'
 import Container from '../components/Container'
-import Button from '../components/Button'
 import StatBlock from '../components/StatBlock'
 import { usePageTitle } from '../lib/usePageTitle'
 
-// Order and naming follow the live site (Departments 01–04) + Media & Community.
+// Order and naming follow the live site (Departments 01-04) + Media & Community.
 const DEPT_CARDS = [
   {
     name: 'Index Construction',
@@ -47,23 +46,28 @@ export default function Home() {
             <span className="font-normal">meets </span>
             <span className="font-bold">Ambition</span>
           </h1>
-          <p className="text-lead text-navy/80">
+          <p className="text-lead text-navy">
             FS Student Hedge Fund is a student-managed investment fund at Frankfurt School, applying rigorous
             analysis and institutional-grade investment strategies to generate long-term returns.
           </p>
         </div>
       </section>
-      <div className="container-page mt-8 md:mt-12">
-        <img
-          src={A('home-1.jpg')}
-          alt=""
-          className="h-[34vw] max-h-[480px] min-h-[200px] w-full object-cover"
-          fetchPriority="high"
-        />
+      {/* Hero image with the navy band bleeding in from the viewport's left edge,
+          straddling the image's bottom (original design: 1054x135 box at left-0) */}
+      <div className="relative mt-12 md:mt-20">
+        <div className="container-page">
+          <img
+            src={A('home-1.jpg')}
+            alt=""
+            className="h-[42vw] max-h-[600px] min-h-[220px] w-full object-cover"
+            fetchPriority="high"
+          />
+        </div>
+        <div aria-hidden className="absolute -bottom-10 left-0 hidden h-28 w-[70vw] max-w-[1054px] bg-navy md:block" />
       </div>
 
       {/* One team, one mission + stats + team photo */}
-      <section className="container-page py-16 md:py-24">
+      <section className="container-page pt-24 pb-16 md:pt-32 md:pb-24">
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
           <div>
             <h2 className="font-display text-h1 font-bold text-navy">
@@ -74,7 +78,7 @@ export default function Home() {
             <p className="mt-6 text-lead text-navy/80">
               FS Student Hedge Fund is Frankfurt School's student-managed investment initiative; a selective team
               operating across three departments: Hedge Fund, Trading &amp; Derivatives, and Index Construction.
-              Together, we apply institutional-grade strategies to real markets — from developing macro theses and
+              Together, we apply institutional-grade strategies to real markets, from developing macro theses and
               managing derivative portfolios to constructing structured indices in collaboration with industry
               partners like Solactive and UniCredit.
             </p>
@@ -86,7 +90,7 @@ export default function Home() {
             </div>
           </div>
           <img
-            src={A('home-3.jpg')}
+            src={A('team-hero.jpg')}
             alt="The FS Student Hedge Fund team"
             className="aspect-[4/3] w-full object-cover"
             loading="lazy"
@@ -120,14 +124,18 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* CTA — hairline divider separates it from the footer's identical navy band */}
-      <section className="border-b border-white/10 bg-navy text-white">
-        <Container className="flex flex-col items-start gap-8 py-16 md:flex-row md:items-center md:justify-between md:py-24">
-          <h2 className="font-display text-h1 font-bold">Be Where Talent Starts.</h2>
-          <Button to="/contact" variant="light">
+      {/* CTA on white, with the navy "Contact us" box as its own element
+          (original design: 443x91 navy box beside the serif heading) */}
+      <section className="container-page py-16 md:py-24">
+        <div className="flex flex-col items-start gap-8 md:flex-row md:items-center md:justify-between">
+          <h2 className="font-display text-h1 font-bold text-navy">Be Where Talent Starts.</h2>
+          <Link
+            to="/contact"
+            className="bg-navy px-16 py-6 font-sans text-2xl font-extrabold text-white transition-opacity hover:opacity-90"
+          >
             Contact us
-          </Button>
-        </Container>
+          </Link>
+        </div>
       </section>
     </>
   )

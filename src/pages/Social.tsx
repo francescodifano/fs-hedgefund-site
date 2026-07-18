@@ -45,7 +45,7 @@ export default function Social() {
         <h1 className="font-display text-display text-navy">Media &amp; Community</h1>
         <p className="mt-6 max-w-3xl text-lead text-navy/80">
           Reach isn't a coincidence, we build it. Our social media platforms document the work of the initiative
-          throughout the year — from investment research and educational content to member life and events — turning
+          throughout the year, from investment research and educational content to member life and events, turning
           what happens inside the Hedge Fund, Trading &amp; Derivatives, and Index Construction departments into content
           people actually want to follow. From explaining how an index gets built to 60-second market updates, we make
           finance accessible to a student audience and beyond.
@@ -82,7 +82,7 @@ export default function Social() {
               >
                 <img
                   src={A(f.img)}
-                  alt={`${f.title} — FS Student Hedge Fund social format`}
+                  alt={`${f.title}, an FS Student Hedge Fund social format`}
                   className="aspect-[4/5] w-full object-cover object-top"
                   loading="lazy"
                 />

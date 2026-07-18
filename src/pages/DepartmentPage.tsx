@@ -19,15 +19,19 @@ export default function DepartmentPage({ slug }: { slug: string }) {
           fetchPriority="high"
         />
         <div className="absolute inset-0 bg-navy/10" />
-        <div className="absolute inset-x-0 bottom-8 flex justify-center px-4 md:bottom-12">
-          <h1 className="bg-navy px-6 py-4 text-center font-display text-h1 font-bold text-white sm:px-10">{d.name}</h1>
+        {/* Name band: left-aligned with the content grid, straddling the image's
+            bottom edge (half over the photo, half over the white area) */}
+        <div className="absolute inset-x-0 bottom-0 translate-y-1/2">
+          <div className="container-page">
+            <h1 className="inline-block bg-navy px-8 py-5 font-display text-h1 font-bold text-white sm:px-12 sm:py-6">{d.name}</h1>
+          </div>
         </div>
       </section>
 
-      <section className="container-page py-16 md:py-24">
+      <section className="container-page pt-28 pb-16 md:pt-36 md:pb-24">
         {/* Heading, rule and copy share one measure so the rule doesn't run into an empty right column */}
         <div className="max-w-4xl">
-          <p className="font-sans text-sm font-bold uppercase tracking-[0.2em] text-navy/60">Department {d.num}</p>
+          <p className="font-sans text-sm font-bold tracking-wide text-navy/60">Department {d.num}</p>
           <h2 className="mt-3 font-display text-h1 font-bold text-navy">About</h2>
           <div className="mt-5 h-px w-full bg-navy/15" />
           <div className="mt-8 space-y-5 text-lead text-navy/85">

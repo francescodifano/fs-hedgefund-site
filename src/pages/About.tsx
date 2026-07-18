@@ -19,7 +19,7 @@ export default function About() {
           </h1>
           <div>
             <p className="text-lead text-navy/80">
-              Frankfurt School's student-managed investment fund — where academic rigor meets real capital.
+              Frankfurt School's student-managed investment fund, where academic rigor meets real capital.
             </p>
             <div className="mt-8">
               <Button to="/contact">Apply</Button>
@@ -36,7 +36,7 @@ export default function About() {
             <p>
               FS Student Hedge Fund is Frankfurt School's student-managed investment initiative; a selective team
               operating across three departments: Hedge Fund, Trading &amp; Derivatives, and Index Construction.
-              Together, we apply institutional-grade strategies to real markets — from developing macro theses and
+              Together, we apply institutional-grade strategies to real markets, from developing macro theses and
               managing derivative portfolios to constructing structured indices in collaboration with industry
               partners like Solactive and UniCredit.
             </p>
@@ -53,7 +53,7 @@ export default function About() {
       <section className="container-page py-16 md:py-24">
         <h2 className="font-display text-h1 font-bold text-navy">Meet the Team</h2>
         <p className="mt-4 max-w-2xl text-lead text-navy/70">
-          A selective team of students operating across our departments — building real financial products, together.
+          A selective team of students operating across our departments, building real financial products together.
         </p>
 
         <figure className="mt-10">
