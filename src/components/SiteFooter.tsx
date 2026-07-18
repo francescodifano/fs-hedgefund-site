@@ -11,13 +11,17 @@ const SOCIALS = [
 ]
 
 // Report slides for the footer carousel (auto-advances every 5 seconds).
-const REPORTS: { img: string; title: string; cta: string; to?: string; href?: string }[] = [
-  { img: 'q1report.jpg', title: 'Q1 Report', cta: 'Get Report', to: '/newsroom' },
+// 'backdrop' slides use the image full-bleed behind the title; 'document'
+// slides show the report cover as a thumbnail beside the text instead
+// (covers carry their own typography, so text must not overlap them).
+const REPORTS: { img: string; title: string; cta: string; to?: string; href?: string; style: 'backdrop' | 'document' }[] = [
+  { img: 'q1report.jpg', title: 'Q1 Report', cta: 'Get Report', to: '/newsroom', style: 'backdrop' },
   {
-    img: 'research-2.jpg',
+    img: 'research-seagate-cover.jpg',
     title: 'Seagate Equity Research',
     cta: 'Read the report',
     href: `${import.meta.env.BASE_URL}papers/seagate-technology-equity-research-2025.pdf`,
+    style: 'document',
   },
 ]
 
@@ -35,16 +39,35 @@ function ReportCarousel() {
           <div
             key={r.title}
             aria-hidden={i !== idx}
-            className={`absolute inset-0 flex flex-col justify-between p-8 transition-opacity duration-700 sm:p-10 ${
+            className={`absolute inset-0 transition-opacity duration-700 ${
               i === idx ? 'opacity-100' : 'pointer-events-none opacity-0'
             }`}
           >
-            <img src={A(r.img)} alt="" className="absolute inset-0 -z-20 h-full w-full object-cover" loading="lazy" />
-            <div className="absolute inset-0 -z-10 bg-navy/40" />
-            <h2 className="font-display text-4xl font-bold sm:text-5xl">{r.title}</h2>
-            <Button to={r.to} href={r.href} variant="light" className="self-start">
-              {r.cta}
-            </Button>
+            {r.style === 'backdrop' ? (
+              <div className="flex h-full flex-col justify-between p-8 sm:p-10">
+                <img src={A(r.img)} alt="" className="absolute inset-0 -z-20 h-full w-full object-cover" loading="lazy" />
+                <div className="absolute inset-0 -z-10 bg-navy/40" />
+                <h2 className="font-display text-4xl font-bold sm:text-5xl">{r.title}</h2>
+                <Button to={r.to} href={r.href} variant="light" className="self-start">
+                  {r.cta}
+                </Button>
+              </div>
+            ) : (
+              <div className="flex h-full items-stretch gap-6 bg-white/5 p-8 ring-1 ring-white/15 sm:p-10">
+                <div className="flex flex-1 flex-col justify-between">
+                  <h2 className="font-display text-3xl font-bold sm:text-4xl">{r.title}</h2>
+                  <Button to={r.to} href={r.href} variant="light" className="self-start">
+                    {r.cta}
+                  </Button>
+                </div>
+                <img
+                  src={A(r.img)}
+                  alt=""
+                  className="hidden max-w-[45%] self-center object-contain sm:block"
+                  loading="lazy"
+                />
+              </div>
+            )}
           </div>
         ))}
       </div>

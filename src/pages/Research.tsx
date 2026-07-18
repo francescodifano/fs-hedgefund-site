@@ -43,9 +43,9 @@ export default function Research() {
 
         <article className="mt-10 grid overflow-hidden bg-navy text-white lg:grid-cols-2">
           <img
-            src={A('research-2.jpg')}
-            alt="Seagate Technology Holdings equity research"
-            className="aspect-[4/3] w-full object-cover lg:aspect-auto lg:h-full"
+            src={A('research-seagate-cover.jpg')}
+            alt="Cover of the Seagate Technology equity research report"
+            className="aspect-[4/3] w-full object-cover object-left lg:aspect-auto lg:h-full"
             loading="lazy"
           />
           <div className="flex flex-col justify-center p-8 md:p-12">
