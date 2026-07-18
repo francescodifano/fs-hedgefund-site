@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import Container from './Container'
-import Button from './Button'
 import TeamCard from './TeamCard'
 import { byName } from '../lib/team'
 import { DEPARTMENTS } from '../lib/nav'
@@ -60,15 +59,20 @@ export function OtherDepartments({ current }: { current: string }) {
   )
 }
 
+// Same design as the homepage's closing CTA (white, serif navy heading, navy
+// box button) — only the wording differs per department.
 export function JoinCta({ dept }: { dept: string }) {
   return (
-    <section className="border-b border-white/10 bg-navy text-white">
-      <Container className="flex flex-col items-start gap-8 py-16 md:flex-row md:items-center md:justify-between md:py-24">
-        <h2 className="font-display text-h1 font-bold">Interested in {dept}?</h2>
-        <Button to="/contact" variant="light">
+    <section className="container-page py-16 md:py-24">
+      <div className="flex flex-col items-start gap-8 md:flex-row md:items-center md:justify-between">
+        <h2 className="font-display text-h1 font-bold text-navy">Interested in {dept}?</h2>
+        <Link
+          to="/contact"
+          className="bg-navy px-16 py-6 font-sans text-2xl font-extrabold text-white transition-opacity hover:opacity-90"
+        >
           Apply
-        </Button>
-      </Container>
+        </Link>
+      </div>
     </section>
   )
 }
