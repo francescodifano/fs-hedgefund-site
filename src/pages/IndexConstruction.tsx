@@ -83,7 +83,7 @@ export default function IndexConstruction() {
       {/* Our Process — the Figma design's two-row box system:
           navy boxes = FSHF internal stages, light boxes = partner stages */}
       <section className="container-page py-16 md:py-24">
-        <h2 className="font-display text-h1 font-bold text-navy">Our Process</h2>
+        <h2 className="font-display text-h1 font-bold text-navy">From Research to Tradable Products</h2>
 
         <div className="mt-10 grid gap-5 md:grid-cols-3">
           {INTERNAL.map((s) => (
