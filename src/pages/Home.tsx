@@ -84,7 +84,7 @@ export default function Home() {
               partners like Solactive and UniCredit.
             </p>
             <div className="mt-10 grid grid-cols-2 gap-6 sm:grid-cols-4">
-              <StatBlock value="100+" label="Members" />
+              <StatBlock value="50+" label="Members" />
               <StatBlock value="10+" label="Nationalities" />
               <StatBlock value="5" label="Departments" />
               <StatBlock value="200+" label="Applications" />
