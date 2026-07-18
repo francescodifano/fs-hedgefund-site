@@ -30,8 +30,9 @@ export default function About() {
 
       {/* Team photo with the navy band bleeding in from the viewport's left edge,
           straddling the image bottom (same treatment as the homepage hero) */}
-      <div className="relative mt-12 md:mt-20">
-        <div className="container-page">
+      <div className="relative z-10 mt-12 md:mt-20">
+        {/* image layered above the band (band peeks out left and below, unchanged position) */}
+        <div className="container-page relative z-10">
           <img
             src={A('team-hero.jpg')}
             alt="The FS Student Hedge Fund team"
@@ -39,7 +40,7 @@ export default function About() {
             fetchPriority="high"
           />
         </div>
-        <div aria-hidden className="absolute -bottom-10 left-0 hidden h-28 w-[70vw] max-w-[1054px] bg-navy md:block" />
+        <div aria-hidden className="absolute -bottom-10 left-0 z-0 hidden h-28 w-[70vw] max-w-[1054px] bg-navy md:block" />
       </div>
 
       {/* Mission (extra top padding clears the band overhang) */}
