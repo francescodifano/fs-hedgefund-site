@@ -37,3 +37,27 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+
+  # GitHub Pages' CDN cold-pulls freshly deployed files very slowly (seconds
+  # per asset). Fetching everything once right after deploy warms the CDN
+  # shield, so real visitors get cache hits instead of origin pulls.
+  warm-cache:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Warm CDN cache
+        run: |
+          BASE="https://francescodifano.github.io/fs-hedgefund-v2"
+          sleep 10
+          HTML=$(curl -s "$BASE/")
+          # bundle (hashed name changes every deploy)
+          echo "$HTML" | grep -oE '/fs-hedgefund-v2/assets/index-[A-Za-z0-9_-]+\.(js|css)' | sort -u | while read -r p; do
+            curl -s -o /dev/null -w "warmed %{time_total}s  $p\n" "https://francescodifano.github.io$p"
+          done
+          # all images and the report
+          curl -s "https://api.github.com/repos/francescodifano/fs-hedgefund-v2/contents/public/assets" \
+            | grep -oE '"name": *"[^"]+"' | cut -d'"' -f4 | while read -r f; do
+            curl -s -o /dev/null -w "warmed %{time_total}s  assets/$f\n" "$BASE/assets/$f"
+          done
+          curl -s -o /dev/null "$BASE/papers/seagate-technology-equity-research-2025.pdf"
+          curl -s -o /dev/null "$BASE/favicon.png"
