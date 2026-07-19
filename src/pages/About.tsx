@@ -36,7 +36,7 @@ export default function About() {
           <img
             src={A('team-hero.jpg')}
             alt="The FS Student Hedge Fund team"
-            className="h-[42vw] max-h-[600px] min-h-[220px] w-full object-cover object-[50%_25%]"
+            className="h-[42vw] max-h-[600px] min-h-[220px] w-full object-cover object-[50%_68%]"
             fetchPriority="high"
           />
         </div>
