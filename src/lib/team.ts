@@ -1,7 +1,7 @@
 // Leadership team — real members from the live FS Student Hedge Fund site.
 // Single source of truth: the About grid and each department's "Leads" section
 // both render from here.
-export type Member = { name: string; role: string; bg: string; img: string }
+export type Member = { name: string; role: string; bg: string; img: string; pos?: string }
 
 export const TEAM: Member[] = [
   { name: 'Tarik Asaad', role: 'President & Founding Member', bg: 'BSc Computational Business Analytics, BSc Mathematics', img: 'team-tarik.jpg' },
@@ -12,7 +12,7 @@ export const TEAM: Member[] = [
   { name: 'Francesco di Fano', role: 'Head of Hedge Fund', bg: 'MSc Finance', img: 'team-francesco.jpg' },
   { name: 'Julius Jagland', role: 'Head of Hedge Fund', bg: 'BSc Business Administration', img: 'team-julius.jpg' },
   { name: 'Tonio Hasler', role: 'Head of Quantitative Team', bg: 'BSc Computational Business Analytics, BSc Physics', img: 'team-tonio.jpg' },
-  { name: 'Helena Morris', role: 'Head of External Relations & Marketing', bg: 'BSc Management, Philosophy, Economics', img: 'team-helena.jpg' },
+  { name: 'Helena Morris', role: 'Head of External Relations & Marketing', bg: 'BSc Management, Philosophy, Economics', img: 'team-helena.jpg', pos: '50% 100%' },
   { name: 'Linh Pham', role: 'Head of External Relations & Marketing', bg: 'BSc Business Administration', img: 'team-linh.jpg' },
   { name: 'Conrad Chen', role: 'Advisor & Founding Member', bg: 'BSc Business Administration', img: 'team-conrad.jpg' },
 ]

@@ -10,6 +10,7 @@ export default function TeamCard({ m, eager = false }: { m: Member; eager?: bool
           src={A(m.img)}
           alt={m.name}
           className="aspect-[4/5] w-full object-cover object-[50%_40%] transition-transform duration-300 group-hover:scale-[1.03]"
+          style={m.pos ? { objectPosition: m.pos } : undefined}
           loading={eager ? undefined : 'lazy'}
         />
       </div>
