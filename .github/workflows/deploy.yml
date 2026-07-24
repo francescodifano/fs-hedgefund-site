@@ -55,7 +55,7 @@ jobs:
             curl -s -o /dev/null -w "warmed %{time_total}s  $p\n" "https://francescodifano.github.io$p"
           done
           # all images and the report
-          curl -s "https://api.github.com/repos/francescodifano/fs-hedgefund-site/contents/public/assets" \
+          curl -s "https://api.github.com/repos/francescodifano/fs-student-hedge-fund/contents/public/assets" \
             | grep -oE '"name": *"[^"]+"' | cut -d'"' -f4 | while read -r f; do
             curl -s -o /dev/null -w "warmed %{time_total}s  assets/$f\n" "$BASE/assets/$f"
           done
